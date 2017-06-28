@@ -1,0 +1,24 @@
+- logging system
+    ability to login/password
+    ability to logout
+    ability to change password
+    ability to recover lost password
+- take a survey
+    user_id
+    date
+    difficulty
+    comments
+- stats about survey
+    search by date
+    ratings & a list of comments
+- automatic email when class is done
+
+# tables
+
+users
+
+## surveys
+- user_id  integer
+- date  (date when class happened) date
+- difficulty integer
+- comments string
