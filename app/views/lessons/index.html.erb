@@ -1,0 +1,14 @@
+<table class="table table-bordered">
+    <tr>
+        <th>Date</th>
+        <th>Video URL</th>
+        <th>Notes</th>
+    </tr>
+    <% @lessons.each do |lesson| %>
+        <tr>
+            <td><%= lesson.date %></td>
+            <td><%= lesson.video_url %></td>
+            <td><%= lesson.notes %></td>
+        </tr>
+    <% end %>
+</table>

@@ -1,7 +1,15 @@
-<form action="<%= survey_path %>" method="POST">
-    <div class="form-group">
-        <input class="form-control" type="text" name="date" placeholder="Class Date">
+<% if @survey.errors.any? %>
+    <div class="alert alert-danger">
+        <ul>
+            <% @survey.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
     </div>
+<% end %>
+
+<%= form_for @survey do |f| %>
+    <%= f.hidden_field :lesson_id %>
     <div class="row">
         <div class="col-md-12">
             How difficult was the class?
@@ -9,23 +17,23 @@
     </div>
     <div class="form-group">
     <label class="radio-inline">
-        <input type="radio" name="difficulty" value="1"> 1
+        <%= f.radio_button("difficulty", "1") %> 1
     </label>
     <label class="radio-inline">
-        <input type="radio" name="difficulty" value="2"> 2
+        <%= f.radio_button("difficulty", "2") %> 2
     </label>
     <label class="radio-inline">
-        <input type="radio" name="difficulty" value="3"> 3
+        <%= f.radio_button("difficulty", "3") %> 3
     </label>
     <label class="radio-inline">
-        <input type="radio" name="difficulty" value="4"> 4
+        <%= f.radio_button("difficulty", "4") %> 4
     </label>
     <label class="radio-inline">
-        <input type="radio" name="difficulty" value="5"> 5
+        <%= f.radio_button("difficulty", "5") %> 5
     </label>
     </div>
     <div class="form-group">
-        <textarea class="form-control" name="comments" placeholder="Comments"></textarea>
+        <%= f.text_area :comments, class: 'form-control', placeholder: 'Comments' %>
     </div>
-    <input class="form-control" type="submit" value="Save">
-</form>
+    <%= f.submit %>
+<% end %>
