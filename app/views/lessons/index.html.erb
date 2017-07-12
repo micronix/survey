@@ -2,13 +2,18 @@
     <tr>
         <th>Date</th>
         <th>Video URL</th>
+        <th>Survey</th>
+        <th>Results</th>
         <th>Notes</th>
     </tr>
     <% @lessons.each do |lesson| %>
         <tr>
             <td><%= lesson.date %></td>
             <td><%= lesson.video_url %></td>
+            <td><a href="<%= "/survey?lesson_id=#{lesson.id}" %>">Survey</a></td>
+            <td><a href="<%= "/lessons/survey_results?lesson_id=#{lesson.id}" %>">Results</a></td>
             <td><%= lesson.notes %></td>
         </tr>
     <% end %>
 </table>
+<a href="/lessons/new" class="btn btn-default">New</a>

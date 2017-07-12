@@ -1,4 +1,6 @@
 class ClassSurveysController < ApplicationController
+  before_action :authenticate_user!
+  
   def new
     @survey = ClassSurvey.new
     @survey.lesson_id = params[:lesson_id]
@@ -9,6 +11,7 @@ class ClassSurveysController < ApplicationController
     @survey = ClassSurvey.new(survey_params)
     @survey.user_id = current_user.id
     if @survey.save
+      redirect_to '/lessons'
     else
       render action: :new
     end

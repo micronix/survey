@@ -1,4 +1,6 @@
 class LessonsController < ApplicationController
+    before_action :authenticate_user!
+    
     def index
         @lessons = Lesson.all
     end
@@ -15,5 +17,9 @@ class LessonsController < ApplicationController
         else
           render action: :new
         end
+    end
+    
+    def survey_results
+        @lesson = Lesson.find(params[:lesson_id])
     end
 end
